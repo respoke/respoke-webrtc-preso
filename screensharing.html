@@ -91,10 +91,21 @@
                 if (respoke.needsChromeExtension && !respoke.hasChromeExtension) {
                     // Install the extension then start screen sharing
                     chrome.webstore.install(
-                        "https://chrome.google.com/webstore/detail/lefkijobnhaffcfhfgpkpkpfgcdcfjbc",
+                        "https://chrome.google.com/webstore/detail/jlpojfookfonjolaeofpibngfpnnflne",
                         onExtensionInstallSuccess,
                         onExtensionInstallFailure
                     );
+                } else if (respoke.needsFirefoxExtension && !respoke.hasFirefoxExtension) {
+                    console.log('attempting to install firefox extension');
+                    InstallTrigger.install({
+                        Foo: {
+                            URL: '/web-examples-respoke.xpi',
+                            Hash: 'sha1:1d8ec172692689966bc48dfdbaab70f742761ec9',
+                            toString: function () {
+                                return this.URL;
+                            }
+                        }
+                    });
                 }
                 else
                 {
